@@ -1,4 +1,4 @@
-plugin-md
+plugin-less
 =========
 
-jspm Markdown plugin
+jspm Less plugin

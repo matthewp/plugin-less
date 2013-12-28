@@ -1,2 +1,14 @@
-<html
-
+<!doctype html>
+<html>
+<head>
+  <title>Less test</title>
+</head>
+<body>
+  <div class="app">Hello world!</div>
+  <script src="jspm_packages/loader.js"></script>
+  <script src="config.js"></script>
+  <script>
+    jspm.import("~/app.less!");
+  </script>
+</body>
+</html>

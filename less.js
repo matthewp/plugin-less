@@ -1,18 +1,30 @@
-var showdown = require('github:coreyti/showdown@0.3.1/src/showdown');
-var converter = new showdown.converter();
+var less = require('github:less/less.js');
+var parser = new less.Parser();
+
+var head = function(){
+  var hd = document.getElementsByTagName('head')[0];
+  if(!hd) {
+    hd = document.createElement('head');
+    document.insertBefore(hd, document.firstChild);
+  }
+  head = function(){
+    return hd;
+  };
+  return hd;
+};
 
 module.exports = function(name, address, fetch, callback, errback) {
-  fetch(address, function(markdown) {
-    callback('module.exports = "'
-    + converter.makeHtml(markdown)
-      .replace(/(["\\])/g, '\\$1')
-      .replace(/[\f]/g, "\\f")
-      .replace(/[\b]/g, "\\b")
-      .replace(/[\n]/g, "\\n")
-      .replace(/[\t]/g, "\\t")
-      .replace(/[\r]/g, "\\r")
-      .replace(/[\u2028]/g, "\\u2028")
-      .replace(/[\u2029]/g, "\\u2029")
-    + '";');
+  fetch(address, function(src){
+    parser.parse(src, function(err, rs){
+      if(err) {
+        return errback(err);
+      }
+
+      var css = rs.toCSS();
+      var style = document.createElement('style');
+      style.innerHTML = css;
+      head().appendChild(style);
+      callback();
+    });
   }, errback);
 }

@@ -1,7 +1,10 @@
 {
   "configFile": "config.js",
   "directories": {
-    "lib": "."
+    "lib": ".",
+    "jspm_packages": "\r"
   },
-  "map": {}
+  "map": {
+    "github:less/less.js": "github:less/less.js@1.5.1"
+  }
 }

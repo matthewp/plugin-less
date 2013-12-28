@@ -1,8 +1,7 @@
 jspm.config({
   "baseURL": ".",
   "map": {
-    "less": "~/../less",
-    "github:less/less.js": "github:less/less.js@1.5.1"
+    "less": "~/../less"
   },
   "packages": {
     "github:less/less.js@1.5.1": {

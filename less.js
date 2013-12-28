@@ -1,4 +1,4 @@
-var less = require('github:less/less.js');
+var less = require('github:less/less.js@1.5.1');
 var parser = new less.Parser();
 
 var head = function(){

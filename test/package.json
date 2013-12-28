@@ -1,0 +1,7 @@
+{
+  "configFile": "config.js",
+  "directories": {
+    "lib": "."
+  },
+  "map": {}
+}
